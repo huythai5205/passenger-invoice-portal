@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#id</th>
+      <th scope="col">Group Name</th>
+      <th scope="col">Tour Name</th>
+      <th scope="col">Tour Code</th>
+      <th scope="col">Departure Date</th>
+      <th scope="col">Pax In Group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let group of groups" (click)="getPassengers(group.id)">
+      <th scope="row">{{group.id}}</th>
+      <td>{{group.group_name}}</td>
+      <td>{{group.tour_name}}</td>
+      <td>{{group.tour_code}}</td>
+      <td>{{group.departure_date}}</td>
+      <td>{{group.pax_in_group}}</td>
+    </tr>
+  </tbody>
+</table>
