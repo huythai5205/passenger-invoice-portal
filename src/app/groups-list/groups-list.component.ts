@@ -13,7 +13,6 @@ import { DataService } from '../services/data.service';
 export class GroupsListComponent implements OnInit {
 
   public groups;
-  public groupId;
 
   constructor(private httpClient: HttpClient, private router: Router, private data: DataService) { }
 
@@ -21,7 +20,6 @@ export class GroupsListComponent implements OnInit {
     //TODO: change http://localhost:3000/api/groups to ./api/groups
     this.httpClient.get('http://localhost:3000/api/groups').subscribe((data) => {
       this.groups = data;
-      console.log(data);
     },
       (err) => {
         console.log(err);
@@ -30,8 +28,6 @@ export class GroupsListComponent implements OnInit {
 
   getPassengers(groupId) {
     this.data.transferData(groupId);
-    console.log(groupId);
-    this.groupId = groupId;
-    this.router.navigate(['passenger-form']);
+    this.router.navigate(['passengers-list']);
   }
 }

@@ -37,7 +37,7 @@ export class GroupFormComponent implements OnInit {
     if (!this.isMissingFields) {
       //TODO: change http://localhost:3000/api/group to ./api/group
       this.httpClient.post('http://localhost:3000/api/group', this.group).subscribe((data) => {
-        console.log('group added');
+        this.router.navigate(['groups-list']);
       },
         error => console.log(error));
     }

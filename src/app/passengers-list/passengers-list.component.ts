@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
-import { GroupsListComponent } from '../groups-list/groups-list.component';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'ht-passengers-list',
@@ -11,16 +12,22 @@ import { GroupsListComponent } from '../groups-list/groups-list.component';
 
 export class PassengersListComponent implements OnInit {
 
-  public group;
+  public passengers;
 
-  constructor(private httpClient: HttpClient, private groupsList: GroupsListComponent) { }
+  constructor(private httpClient: HttpClient, private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
-    //TODO: change http://localhost:3000/api/passengers to ./api/passengers 
-    this.httpClient.get('http://localhost:3000/api/passengers' + this.groupsList.groupId).subscribe((data) => {
-      this.group = data;
+
+    this.dataService.data.subscribe((groupId) => {
+      //TODO: change http://localhost:3000/api/passengers to ./api/passengers 
+      this.httpClient.get('http://localhost:3000/api/passengers' + groupId).subscribe((data) => {
+        this.passengers = data;
+      });
     });
+
   }
 
-
+  addPassenger() {
+    this.router.navigate(['passenger-form']);
+  }
 }
