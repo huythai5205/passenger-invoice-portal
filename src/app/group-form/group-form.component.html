@@ -35,5 +35,9 @@
     </div>
   </div>
 
+  <div *ngIf='isMissingField'>
+    <h1>Please fill out all fields</h1>
+  </div>
+
   <button type="submit">Submit</button>
 </form>

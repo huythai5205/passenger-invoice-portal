@@ -10,14 +10,14 @@ module.exports = function (app) {
     });
   });
 
-  app.get('/api/group/', (req, res) => {
+  app.get('/api/group/:groupId', (req, res) => {
     db.Groups.find({
       where: {
-        email: email
+        id: req.params.groupId
       },
       include: [db.Passengers]
     }).then((data) => {
-
+      res.json(data);
     });
   });
 

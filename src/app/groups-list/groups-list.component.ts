@@ -14,7 +14,7 @@ export class GroupsListComponent implements OnInit {
 
   public groups;
 
-  constructor(private httpClient: HttpClient, private router: Router, private data: DataService) { }
+  constructor(private httpClient: HttpClient, private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
     //TODO: change http://localhost:3000/api/groups to ./api/groups
@@ -27,7 +27,7 @@ export class GroupsListComponent implements OnInit {
   }
 
   getPassengers(groupId) {
-    this.data.transferData(groupId);
+    this.dataService.transferData(groupId);
     this.router.navigate(['passengers-list']);
   }
 }

@@ -1,3 +1,5 @@
+<h1>Passenger Form</h1>
+
 <form (ngSubmit)="onSubmit()" #groupForm="ngForm" [ngFormOptions]="{updateOn: 'change'}">
 
   <div class="form-group row">
@@ -103,6 +105,10 @@
     <div class="col-10">
       <input class="form-control" type="number" name="group_credit_amt" [(ngModel)]="passenger.group_credit_amt" #group_credit_amt="ngModel">
     </div>
+  </div>
+
+  <div *ngIf='isMissingField'>
+    <h1>Please fill out all fields</h1>
   </div>
 
   <button type="submit">Submit</button>
