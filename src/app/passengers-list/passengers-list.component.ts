@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -10,31 +10,36 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./passengers-list.component.css']
 })
 
-export class PassengersListComponent implements OnInit {
+export class PassengersListComponent implements OnInit, AfterViewInit {
 
   public group;
   public groupId;
-  public passengers;
+  public passengers: any[] = [];
 
   constructor(private httpClient: HttpClient, private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
 
+  }
+
+  ngAfterViewInit() {
+    console.log('AFTER VIEW INIT');
     this.dataService.data.subscribe((groupId) => {
-      //TODO: change http://localhost:3000/api/group to ./api/group 
+      //TODO: change http://localhost:3000/api/group to ./api/group
       this.groupId = groupId;
       console.log('groupId', this.groupId);
       this.httpClient.get('http://localhost:3000/api/group/' + groupId).subscribe((data) => {
         this.group = data;
-        this.passengers = this.group.Passengers;
+        this.passengers = (<any>data).Passengers;
+        console.log('PASSENGERS', this.passengers);
+        console.log('GROUP', data)
         console.log(this.group.Passengers[0].balance);
-        console.log(this.group);
+        console.log(this.group.Passengers);
       });
     },
       err => {
         console.log(err);
       });
-
   }
 
   addPassenger() {

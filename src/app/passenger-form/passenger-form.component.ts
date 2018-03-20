@@ -37,11 +37,16 @@ export class PassengerFormComponent implements OnInit {
   constructor(private httpClient: HttpClient, private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
-    console.log("passengers form");
-    this.dataService.data.subscribe((groupId) => {
-      this.groupId = groupId;
-      console.log(this.groupId);
-    });
+    console.trace();
+
+    // console.log("passengers form");
+    this.groupId = this.dataService.groupId;
+    // this.dataService.data.subscribe((groupId) => {
+    //   this.groupId = groupId;
+    //   console.log('fasdfasd', groupId);
+    //   console.log(this.groupId);
+    // });
+    console.log(this.groupId);
   }
 
   onSubmit() {

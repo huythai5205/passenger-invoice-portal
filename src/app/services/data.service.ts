@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class DataService {
-  data = new Subject<String>();
+  groupId: string;
+  data = new BehaviorSubject<String>(null);
   constructor() { }
   transferData(data) {
+    this.groupId = data;
     this.data.next(data);
   }
 }

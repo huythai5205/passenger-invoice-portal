@@ -1,5 +1,7 @@
 <h1>Passengers List</h1>
-
+<p *ngIf="passengers">{{passengers}} first</p>
+<p>second</p>
+<p>{{group}} third</p>
 <table class="table">
   <thead>
     <tr>
@@ -22,22 +24,23 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let passenger of passengers" (click)="getPassengers()">
-      <th scope="row">{{passenger}}</th>
-      <td>{{passenger.balance}}</td>
-      <td>{{passenger.departure_date}}</td>
-      <td>{{passenger.due_date}}</td>
-      <td>{{passenger.group_credit_amt}}</td>
-      <td>{{passenger.group_credit_shared}}</td>
-      <th>{{passenger.group_credit_split}}</th>
-      <td>{{passenger.group_name}}</td>
-      <td>{{passenger.hasGroupCredit}}</td>
-      <td>{{passenger.invoice}}</td>
-      <td>{{passenger.isGroupLeader}}</td>
-      <td>{{passenger.pax_name}}</td>
-      <th>{{passenger.payments}}</th>
-      <td>{{passenger.total_group_credit}}</td>
-      <td>{{passenger.tour_code}}</td>
+
+    <tr *ngFor="let passenger of passengers;" (click)="getPassengers()">
+      <thead scope="row">Helo World</thead>
+      <td>{{passenger !== undefined ?passenger.balance: ''}}</td>
+      <td>{{passenger !== undefined ?passenger.departure_date: ''}}</td>
+      <td>{{passenger !== undefined ?passenger.due_date: ''}}</td>
+      <td>{{passenger !== undefined ?passenger.group_credit_amt: ''}}</td>
+      <td>{{passenger !== undefined ?passenger.group_credit_shared: ''}}</td>
+      <th>{{passenger !== undefined ?passenger.group_credit_split: ''}}</th>
+      <td>{{passenger !== undefined ?passenger.group_name: ''}}</td>
+      <td>{{passenger !== undefined ?passenger.hasGroupCredit: ''}}</td>
+      <td>{{passenger !== undefined ?passenger.invoice: ''}}</td>
+      <td>{{passenger !== undefined ?passenger.isGroupLeader: ''}}</td>
+      <td>{{passenger !== undefined ?passenger.pax_name: ''}}</td>
+      <th>{{passenger !== undefined ?passenger.payments: ''}}</th>
+      <td>{{passenger !== undefined ?passenger.total_group_credit: ''}}</td>
+      <td>{{passenger !== undefined ?passenger.tour_code: ''}}</td>
     </tr>
   </tbody>
 </table>
