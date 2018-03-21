@@ -38,4 +38,14 @@ module.exports = function (app) {
       res.json(data);
     });
   });
+
+  app.delete('/api/group/:groupId', (req, res) => {
+    db.Groups.destroy({
+      where: {
+        id: req.params.groupId
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
 };

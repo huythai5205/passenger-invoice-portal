@@ -6,12 +6,16 @@ import { GroupFormComponent } from './group-form/group-form.component';
 import { PassengerFormComponent } from './passenger-form/passenger-form.component';
 import { GroupsListComponent } from './groups-list/groups-list.component';
 import { PassengersListComponent } from './passengers-list/passengers-list.component';
+import { UpdateGroupComponent } from './update-group/update-group.component';
+import { UpdatePassengerComponent } from './update-passenger/update-passenger.component';
 
 const routes: Routes = [
   { path: 'group-form', component: GroupFormComponent },
   { path: 'passenger-form', component: PassengerFormComponent },
   { path: 'groups-list', component: GroupsListComponent },
-  { path: 'passengers-list', component: PassengersListComponent }
+  { path: 'passengers-list', component: PassengersListComponent },
+  { path: 'update-group', component: GroupsListComponent },
+  { path: 'update-passenger', component: PassengersListComponent }
 ];
 
 @NgModule({
@@ -20,4 +24,4 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule { }
-export const RoutingComponents = [GroupFormComponent, PassengerFormComponent, GroupsListComponent, PassengersListComponent];
+export const RoutingComponents = [GroupFormComponent, PassengerFormComponent, GroupsListComponent, PassengersListComponent, UpdateGroupComponent, UpdatePassengerComponent];

@@ -12,13 +12,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let group of groups" (click)="getPassengers(group.id)">
+    <tr *ngFor="let group of groups">
       <th scope="row">{{group.id}}</th>
       <td>{{group.group_name}}</td>
       <td>{{group.tour_name}}</td>
       <td>{{group.tour_code}}</td>
       <td>{{group.departure_date}}</td>
       <td>{{group.pax_in_group}}</td>
+      <td>
+        <button (click)="getPassenger(group.id)">Passengers</button>
+      </td>
+      <td>
+        <button (click)="updateGroup(group.id)">Edit</button>
+      </td>
     </tr>
   </tbody>
 </table>

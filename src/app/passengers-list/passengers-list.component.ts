@@ -10,7 +10,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./passengers-list.component.css']
 })
 
-export class PassengersListComponent implements OnInit, AfterViewInit {
+export class PassengersListComponent implements OnInit {
 
   public group;
   public groupId;
@@ -19,23 +19,11 @@ export class PassengersListComponent implements OnInit, AfterViewInit {
   constructor(private httpClient: HttpClient, private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
-
-  }
-
-  ngAfterViewInit() {
-    console.log('AFTER VIEW INIT');
-    this.dataService.data.subscribe((groupId) => {
-      //TODO: change http://localhost:3000/api/group to ./api/group
-      this.groupId = groupId;
-      console.log('groupId', this.groupId);
-      this.httpClient.get('http://localhost:3000/api/group/' + groupId).subscribe((data) => {
-        this.group = data;
-        this.passengers = (<any>data).Passengers;
-        console.log('PASSENGERS', this.passengers);
-        console.log('GROUP', data)
-        console.log(this.group.Passengers[0].balance);
-        console.log(this.group.Passengers);
-      });
+    this.groupId = this.dataService.ids.groupId || this.router.navigate(['group-list']);
+    //TODO: change http://localhost:3000/api/group/ to ./api/group
+    this.httpClient.get('http://localhost:3000/api/group/' + this.groupId).subscribe((data) => {
+      this.group = data;
+      this.passengers = (<any>data).Passengers;
     },
       err => {
         console.log(err);
@@ -43,8 +31,11 @@ export class PassengersListComponent implements OnInit, AfterViewInit {
   }
 
   addPassenger() {
-    console.log(this.groupId);
-    // this.dataService.transferData(this.groupId);
     this.router.navigate(['passenger-form']);
+  }
+
+  updatePassenger(passengerId) {
+    this.dataService.ids.passengerId = passengerId;
+    this.router.navigate(['update-passenger']);
   }
 }

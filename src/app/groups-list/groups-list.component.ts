@@ -27,7 +27,12 @@ export class GroupsListComponent implements OnInit {
   }
 
   getPassengers(groupId) {
-    this.dataService.transferData(groupId);
+    this.dataService.ids.groupId = groupId;
     this.router.navigate(['passengers-list']);
+  }
+
+  updateGroup(groupId) {
+    this.dataService.ids.groupId = groupId;
+    this.router.navigate(['update-group']);
   }
 }

@@ -11,6 +11,7 @@ declare let $: any;
   templateUrl: './passenger-form.component.html',
   styleUrls: ['./passenger-form.component.css']
 })
+
 export class PassengerFormComponent implements OnInit {
 
   public groupId;
@@ -31,22 +32,13 @@ export class PassengerFormComponent implements OnInit {
     group_credit_shared: '',
     group_credit_split: '',
     group_credit_amt: '',
-    groupId: ''
+    GroupId: ''
   }
 
   constructor(private httpClient: HttpClient, private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
-    console.trace();
-
-    // console.log("passengers form");
-    this.groupId = this.dataService.groupId;
-    // this.dataService.data.subscribe((groupId) => {
-    //   this.groupId = groupId;
-    //   console.log('fasdfasd', groupId);
-    //   console.log(this.groupId);
-    // });
-    console.log(this.groupId);
+    this.groupId = this.dataService.ids.groupId || this.router.navigate(['group-list']);
   }
 
   onSubmit() {
@@ -57,10 +49,8 @@ export class PassengerFormComponent implements OnInit {
         break;
       }
     }
-    console.log(this.groupId);
     if (!this.isMissingFields) {
-      this.passenger.groupId = this.groupId;
-      console.log(this.passenger);
+      this.passenger.GroupId = this.groupId;
       //TODO: change http://localhost:3000/api/passenger to ./api/passenger
       this.httpClient.post('http://localhost:3000/api/passenger', this.passenger).subscribe((data) => {
         this.router.navigate(['passengers-list']);
