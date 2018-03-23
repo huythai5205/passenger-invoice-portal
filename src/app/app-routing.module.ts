@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: 'passenger-form', component: PassengerFormComponent },
   { path: 'groups-list', component: GroupsListComponent },
   { path: 'passengers-list', component: PassengersListComponent },
-  { path: 'update-group', component: GroupsListComponent },
-  { path: 'update-passenger', component: PassengersListComponent }
+  { path: 'update-group', component: UpdateGroupComponent },
+  { path: 'update-passenger', component: UpdatePassengerComponent }
 ];
 
 @NgModule({

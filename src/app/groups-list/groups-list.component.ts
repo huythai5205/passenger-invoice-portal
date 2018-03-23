@@ -32,6 +32,7 @@ export class GroupsListComponent implements OnInit {
   }
 
   updateGroup(groupId) {
+    console.log(groupId);
     this.dataService.ids.groupId = groupId;
     this.router.navigate(['update-group']);
   }

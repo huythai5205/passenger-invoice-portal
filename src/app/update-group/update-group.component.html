@@ -1,5 +1,5 @@
 <h1>Update Group From</h1>
-<form (ngSubmit)="onSubmit()" #groupForm="ngForm" [ngFormOptions]="{updateOn: 'change'}">
+<form *ngIf="group" (ngSubmit)="onSubmit()" #groupForm="ngForm" [ngFormOptions]="{updateOn: 'change'}">
 
   <div class="form-group row">
     <label class="col-2 col-form-label">Group Name: </label>

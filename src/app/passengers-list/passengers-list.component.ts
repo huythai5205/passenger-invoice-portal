@@ -14,16 +14,16 @@ export class PassengersListComponent implements OnInit {
 
   public group;
   public groupId;
-  public passengers: any[] = [];
+  public passengers;
 
   constructor(private httpClient: HttpClient, private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
-    this.groupId = this.dataService.ids.groupId || this.router.navigate(['group-list']);
+    this.groupId = this.dataService.ids.groupId || this.router.navigate(['groups-list']);
     //TODO: change http://localhost:3000/api/group/ to ./api/group
     this.httpClient.get('http://localhost:3000/api/group/' + this.groupId).subscribe((data) => {
       this.group = data;
-      this.passengers = (<any>data).Passengers;
+      this.passengers = this.group.Passengers;
     },
       err => {
         console.log(err);

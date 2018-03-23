@@ -22,7 +22,7 @@
   </thead>
   <tbody>
 
-    <tr *ngFor="let passenger of passengers;" (click)="updatePassengers(passenger.id)">
+    <tr *ngFor="let passenger of passengers;">
       <thead scope="row">{{passenger !== undefined ?passenger.id: ''}}</thead>
       <td>{{passenger !== undefined ?passenger.balance: ''}}</td>
       <td>{{passenger !== undefined ?passenger.departure_date: ''}}</td>
@@ -38,6 +38,7 @@
       <th>{{passenger !== undefined ?passenger.payments: ''}}</th>
       <td>{{passenger !== undefined ?passenger.total_group_credit: ''}}</td>
       <td>{{passenger !== undefined ?passenger.tour_code: ''}}</td>
+      <button (click)="updatePassenger(passenger.id)">Edit</button>
     </tr>
   </tbody>
 </table>
