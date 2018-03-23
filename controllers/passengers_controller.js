@@ -32,6 +32,17 @@ module.exports = function (app) {
     });
   });
 
+  app.put('/api/passenger', (req, res) => {
+    db.Passengers.update(
+      req.body, {
+        where: {
+          id: req.body.id
+        }
+      }).then(data => {
+      res.json(data);
+    });
+  });
+
   app.delete('/api/passenger', function (req, res) {
     db.Passengers.destroy({
       where: {

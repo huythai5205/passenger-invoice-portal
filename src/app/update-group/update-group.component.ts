@@ -10,13 +10,6 @@ import { DataService } from '../services/data.service';
 })
 export class UpdateGroupComponent implements OnInit {
 
-  // public group =  {
-  //   group_name: '',
-  //   tour_name: '',
-  //   tour_code: '',
-  //   departure_date: '',
-  //   pax_in_group: ''
-  // }
   public group: {};
 
   constructor(private httpClient: HttpClient, private router: Router, private dataService: DataService) { }
@@ -26,14 +19,16 @@ export class UpdateGroupComponent implements OnInit {
     //TODO: change http://localhost:3000/api/group to ./api/group
     this.httpClient.get('http://localhost:3000/api/group/' + groupId).subscribe(data => {
       this.group = data;
-    });
+    },
+      err => {
+        console.log(err);
+      });
   }
 
   onSubmit() {
-    console.log("update");
     //TODO: change http://localhost:3000/api/group to ./api/group
-    this.httpClient.post('http://localhost:3000/api/group/', this.group).subscribe(data => {
-      this.router.navigate(['group-list']);
+    this.httpClient.put('http://localhost:3000/api/group', this.group).subscribe(data => {
+      this.router.navigate(['groups-list']);
     },
       err => {
         console.log(err);
