@@ -1,36 +1,50 @@
-module.exports = function(sequelize, DataTypes) {
-    var Groups = sequelize.define("Groups", {
-        group_name: {type: DataTypes.STRING},
-       
-        tour_name: {type: DataTypes.STRING},
+module.exports = function (sequelize, DataTypes) {
+  const Groups = sequelize.define("Groups", {
+    groupName: {
+      type: DataTypes.STRING
+    },
 
-        tour_code: {type: DataTypes.STRING},
+    tourName: {
+      type: DataTypes.STRING
+    },
 
-        departure_date: {type: DataTypes.STRING},
+    tourCode: {
+      type: DataTypes.STRING
+    },
 
-        pax_in_group: {type: DataTypes.INTEGER},
-        
-        createdAt: {
-            allowNull: false,
-            type: DataTypes.BOOLEAN,
-            defaultValue: true
-        },
-        updatedAt: {
-            allowNull: false,
-            type: DataTypes.BOOLEAN,
-            defaultValue: true
-        },
-        // underscored: true 
+    departureDate: {
+      type: DataTypes.STRING
+    },
+
+    totalGroupCredit: {
+      type: DataTypes.DOUBLE
+    },
+
+    creditLeft: {
+      type: DataTypes.DOUBLE
+    },
+
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
+
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
+    // underscored: true 
+  });
+
+  Groups.associate = function (models) {
+
+    Groups.hasMany(models.Passengers, {
+      // underscored: true,
+      onDelete: "cascade"
     });
-  
-    Groups.associate = function(models) {
-      
-      Groups.hasMany(models.Passengers, {
-        // underscored: true,
-        onDelete: "cascade"
-      });
-    };
-  
-    return Groups;
   };
 
+  return Groups;
+};

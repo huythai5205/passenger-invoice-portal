@@ -26,6 +26,16 @@ export class GroupsListComponent implements OnInit {
       });
   }
 
+  deleteGroup(groupId) {
+    //TODO: change http://localhost:3000/api/groups to ./api/groups
+    this.httpClient.delete('http://localhost:3000/api/group/' + groupId).subscribe((data) => {
+      this.router.navigate(['groups-list']);
+    },
+      (err) => {
+        console.log(err);
+      });
+  }
+
   getPassengers(groupId) {
     this.dataService.ids.groupId = groupId;
     this.router.navigate(['passengers-list']);

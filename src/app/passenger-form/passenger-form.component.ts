@@ -17,28 +17,19 @@ export class PassengerFormComponent implements OnInit {
   public groupId;
   public isMissingFields;
   public passenger = {
-    group_name: '',
-    tour_name: '',
-    tour_code: '',
-    departure_date: '',
-    invoice: '',
-    pax_name: '',
-    payments: '',
-    balance: '',
-    due_date: '',
+    name: '',
     isGroupLeader: '',
-    total_group_credit: '',
-    hasGroupCredit: '',
-    group_credit_shared: '',
-    group_credit_split: '',
-    group_credit_amt: '',
+    discountCredit: '',
+    hasCreditSplit: '',
+    balance: '',
+    pax_name: '',
     GroupId: ''
   }
 
   constructor(private httpClient: HttpClient, private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
-    this.groupId = this.dataService.ids.groupId || this.router.navigate(['group-list']);
+    this.groupId = this.dataService.ids.groupId || this.router.navigate(['groups-list']);
   }
 
   onSubmit() {

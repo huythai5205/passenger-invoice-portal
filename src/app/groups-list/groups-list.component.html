@@ -3,22 +3,26 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#id</th>
+      <th scope="col"></th>
       <th scope="col">Group Name</th>
       <th scope="col">Tour Name</th>
       <th scope="col">Tour Code</th>
       <th scope="col">Departure Date</th>
-      <th scope="col">Pax In Group</th>
+      <th scope="col">Total Group Credit</th>
+      <th scope="col">Credit Left</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let group of groups">
-      <th scope="row">{{group.id}}</th>
-      <td>{{group.group_name}}</td>
-      <td>{{group.tour_name}}</td>
-      <td>{{group.tour_code}}</td>
-      <td>{{group.departure_date}}</td>
-      <td>{{group.pax_in_group}}</td>
+      <td>
+        <button (click)="deleteGroup(group.id)">Delete</button>
+      </td>
+      <td>{{group.groupName}}</td>
+      <td>{{group.tourName}}</td>
+      <td>{{group.tourCode}}</td>
+      <td>{{group.departureDate}}</td>
+      <td>{{group.totalGroupCredit}}</td>
+      <td>{{group.creditLeft}}</td>
       <td>
         <button (click)="getPassengers(group.id)">Passengers</button>
       </td>

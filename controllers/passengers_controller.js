@@ -43,7 +43,7 @@ module.exports = function (app) {
     });
   });
 
-  app.delete('/api/passenger', function (req, res) {
+  app.delete('/api/passenger/:passengerId', function (req, res) {
     db.Passengers.destroy({
       where: {
         id: req.params.passengerId

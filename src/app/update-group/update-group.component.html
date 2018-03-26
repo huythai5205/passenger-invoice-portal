@@ -1,47 +1,42 @@
 <h1>Update Group From</h1>
-<form *ngIf="group" (ngSubmit)="onSubmit()" #groupForm="ngForm" [ngFormOptions]="{updateOn: 'change'}">
+<form (ngSubmit)="onSubmit()" #groupForm="ngForm" [ngFormOptions]="{updateOn: 'change'}">
 
   <div class="form-group row">
     <label class="col-2 col-form-label">Group Name: </label>
     <div class="col-10">
-      <input class="form-control" type="text" name="group_name" placeholder="{{group.group_name}}" [(ngModel)]="group.group_name"
-        #group_name="ngModel">
+      <input class="form-control" type="text" name="group_name" [(ngModel)]="group.groupName" #group_name="ngModel">
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-2 col-form-label">Tour Name: </label>
     <div class="col-10">
-      <input class="form-control" type="text" name="tour_name" placeholder="{{group.tour_name}}" [(ngModel)]="group.tour_name"
-        #tour_name="ngModel">
+      <input class="form-control" type="text" name="tour_name" [(ngModel)]="group.tourName" #tour_name="ngModel">
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-2 col-form-label">Tour Code: </label>
     <div class="col-10">
-      <input class="form-control" type="text" name="tour_code" placeholder="{{group.tour_code}}" [(ngModel)]="group.tour_code"
-        #tour_code="ngModel">
+      <input class="form-control" type="text" name="tour_code" [(ngModel)]="group.tourCode" #tour_code="ngModel">
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-2 col-form-label">Departure Date: </label>
     <div class="col-10">
-      <input class="form-control" type="date" name="departure_date" placeholder="{{group.departure_date}}" [(ngModel)]="group.departure_date"
-        #departure_date="ngModel">
+      <input class="form-control" type="date" name="departure_date" [(ngModel)]="group.departureDate" #departure_date="ngModel">
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-2 col-form-label">Pax in Group: </label>
+    <label class="col-2 col-form-label">Total Group Credit: </label>
     <div class="col-10">
-      <input class="form-control" type="number" name="pax_in_group" placeholder="{{group.pax_in_group}}" [(ngModel)]="group.pax_in_group"
-        #pax_in_group="ngModel">
+      <input class="form-control" type="number" name="total_group_credit" [(ngModel)]="group.totalGroupCredit" #total_group_credit="ngModel">
     </div>
   </div>
 
-  <div *ngIf='isMissingField'>
+  <div *ngIf="isMissingFields">
     <h1>Please fill out all fields</h1>
   </div>
 

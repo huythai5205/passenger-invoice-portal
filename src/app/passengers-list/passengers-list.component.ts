@@ -23,7 +23,7 @@ export class PassengersListComponent implements OnInit {
     //TODO: change http://localhost:3000/api/group/ to ./api/group
     this.httpClient.get('http://localhost:3000/api/group/' + this.groupId).subscribe((data) => {
       this.group = data;
-      this.passengers = this.group.Passengers;
+      this.passengers = this.group.Passengers || "";
     },
       err => {
         console.log(err);
@@ -34,8 +34,18 @@ export class PassengersListComponent implements OnInit {
     this.router.navigate(['passenger-form']);
   }
 
+  deletePassenger(passengerId) {
+    this.httpClient.delete('http://localhost:3000/api/passenger/' + passengerId).subscribe(data => {
+      this.router.navigate(['passengers-list']);
+    },
+      err => {
+        console.log(err);
+      });
+  }
+
   updatePassenger(passengerId) {
     this.dataService.ids.passengerId = passengerId;
     this.router.navigate(['update-passenger']);
   }
+
 }

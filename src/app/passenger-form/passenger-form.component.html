@@ -3,107 +3,37 @@
 <form (ngSubmit)="onSubmit()" #groupForm="ngForm" [ngFormOptions]="{updateOn: 'change'}">
 
   <div class="form-group row">
-    <label class="col-2 col-form-label">Group Name: </label>
+    <label class="col-2 col-form-label">Name: </label>
     <div class="col-10">
-      <input class="form-control" type="text" name="group_name" [(ngModel)]="passenger.group_name" #group_name="ngModel">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Tour Name: </label>
-    <div class="col-10">
-      <input class="form-control" type="text" name="tour_name" [(ngModel)]="passenger.tour_name" #tour_name="ngModel">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Tour Code: </label>
-    <div class="col-10">
-      <input class="form-control" type="text" name="tour_code" [(ngModel)]="passenger.tour_code" #tour_code="ngModel">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Departure Date: </label>
-    <div class="col-10">
-      <input class="form-control" type="date" name="departure_date" [(ngModel)]="passenger.departure_date" #departure_date="ngModel">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Invoice: </label>
-    <div class="col-10">
-      <input class="form-control" type="number" name="invoice" [(ngModel)]="passenger.invoice" #invoice="ngModel">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Pax Name: </label>
-    <div class="col-10">
-      <input class="form-control" type="text" name="pax_name" [(ngModel)]="passenger.pax_name" #pax_name="ngModel">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Payments: </label>
-    <div class="col-10">
-      <input class="form-control" type="text" name="payments" [(ngModel)]="passenger.payments" #payments="ngModel">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Balance: </label>
-    <div class="col-10">
-      <input class="form-control" type="text" name="balance" [(ngModel)]="passenger.balance" #balance="ngModel">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Due Date: </label>
-    <div class="col-10">
-      <input class="form-control" type="date" name="due_date" [(ngModel)]="passenger.due_date" #due_date="ngModel">
+      <input class="form-control" type="text" name="name" [(ngModel)]="passenger.name" #name="ngModel">
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-2 col-form-label">Is Group Leader: </label>
     <div class="col-10">
-      <input class="form-control" type="number" name="isGroupLeader" [(ngModel)]="passenger.isGroupLeader" #isGroupLeader="ngModel">
+      <input class="form-control" type="checkbox" name="is_group_leader" [(ngModel)]="passenger.isGroupLeader" #is_group_leader="ngModel">
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-2 col-form-label">Total Group Credit: </label>
+    <label class="col-2 col-form-label">Discount Credit: </label>
     <div class="col-10">
-      <input class="form-control" type="text" name="total_group_credit" [(ngModel)]="passenger.total_group_credit" #total_group_credit="ngModel">
+      <input class="form-control" type="number" name="discount_credit" [(ngModel)]="passenger.discountCredit" #discount_credit="ngModel">
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-2 col-form-label">Has Group Credit: </label>
+    <label class="col-2 col-form-label">Has Split Credit: </label>
     <div class="col-10">
-      <input class="form-control" type="text" name="hasGroupCredit" [(ngModel)]="passenger.hasGroupCredit" #hasGroupCredit="ngModel">
+      <input class="form-control" type="checkbox" name="has_split_credit" [(ngModel)]="passenger.hasSplitCredit" #has_split_credit="ngModel">
     </div>
   </div>
 
   <div class="form-group row">
-    <label class="col-2 col-form-label">Group Credit Shared: </label>
+    <label class="col-2 col-form-label">Balance: </label>
     <div class="col-10">
-      <input class="form-control" type="text" name="group_credit_shared" [(ngModel)]="passenger.group_credit_shared" #group_credit_shared="ngModel">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Group Credit Split: </label>
-    <div class="col-10">
-      <input class="form-control" type="date" name="group_credit_split" [(ngModel)]="passenger.group_credit_split" #group_credit_split="ngModel">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Group Credit AMT: </label>
-    <div class="col-10">
-      <input class="form-control" type="number" name="group_credit_amt" [(ngModel)]="passenger.group_credit_amt" #group_credit_amt="ngModel">
+      <input class="form-control" type="number" name="balance" [(ngModel)]="passenger.balance" #balance="ngModel">
     </div>
   </div>
 

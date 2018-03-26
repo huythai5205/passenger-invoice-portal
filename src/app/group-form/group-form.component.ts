@@ -13,11 +13,12 @@ export class GroupFormComponent implements OnInit {
 
   public isMissingFields = false;
   public group = {
-    group_name: '',
-    tour_name: '',
-    tour_code: '',
-    departure_date: '',
-    pax_in_group: ''
+    groupName: '',
+    tourName: '',
+    tourCode: '',
+    departureDate: '',
+    totalGroupCredit: '',
+    creditLeft: ''
   }
 
   constructor(private httpClient: HttpClient, private router: Router) { }
@@ -26,6 +27,7 @@ export class GroupFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isMissingFields = false;
     let inputs = $('input');
     for (let i = 0; i < inputs.length; i++) {
       if (inputs[i].value === '') {
@@ -35,6 +37,7 @@ export class GroupFormComponent implements OnInit {
     }
 
     if (!this.isMissingFields) {
+      this.group.creditLeft = this.group.totalGroupCredit;
       //TODO: change http://localhost:3000/api/group to ./api/group
       this.httpClient.post('http://localhost:3000/api/group', this.group).subscribe((data) => {
         this.router.navigate(['groups-list']);
