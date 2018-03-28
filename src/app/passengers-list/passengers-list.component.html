@@ -1,3 +1,7 @@
+<h3>Group Name: {{group.groupName}}</h3>
+<h3>Total Credit: {{group.totalGroupCredit}}</h3>
+<h3>Credit Left: </h3>
+
 <h1>Passengers List</h1>
 <table class="table">
   <thead>
@@ -23,7 +27,8 @@
         <input class="form-control" type="checkbox" name="is_group_leader" [(ngModel)]="passenger.isGroupLeader" #is_group_leader="ngModel">
       </td>
       <td>
-        <input class="form-control" type="number" name="discount_credit" [(ngModel)]="passenger.discountCredit" #discount_credit="ngModel">
+        <input class="form-control" type="number" name="discount_credit" [(ngModel)]="passenger.discountCredit" #discount_credit="ngModel"
+          [disabled]="passenger.hasSplitCredit">
       </td>
       <td>
         <input class="form-control" type="checkbox" name="has_split_credit" [(ngModel)]="passenger.hasSplitCredit" #has_split_credit="ngModel">
@@ -39,3 +44,4 @@
 </table>
 
 <button (click)="addPassenger()">Add addPassenger</button>
+<button (click)="onSubmit()">Submit</button>

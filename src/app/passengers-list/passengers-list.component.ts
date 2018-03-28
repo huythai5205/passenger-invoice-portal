@@ -15,6 +15,7 @@ export class PassengersListComponent implements OnInit {
   public group;
   public groupId;
   public passengers;
+  public CreditLeft = 0;
 
   constructor(private httpClient: HttpClient, private dataService: DataService, private router: Router) { }
 
@@ -32,6 +33,36 @@ export class PassengersListComponent implements OnInit {
 
   addPassenger() {
     this.router.navigate(['passenger-form']);
+  }
+
+  onSubmit() {
+
+    this.CreditLeft = this.group.totalGroupCredit;
+    let numSplit = 0;
+    for (let passenger of this.passengers) {
+      if (!passenger.hasSplitCredit) {
+        this.CreditLeft -= passenger.discountCredit;
+      } else {
+        numSplit++;
+      }
+    }
+    const splitCredit = this.CreditLeft / numSplit;
+
+    for (let passenger of this.passengers) {
+      if (passenger.hasSplitCredit) {
+        passenger.discountCredit = splitCredit;
+      }
+    }
+
+    for (let passenger of this.passengers) {
+      this.httpClient.put('http://localhost:3000/api/passenger', passenger).subscribe(data => {
+        console.log(data);
+      },
+        err => {
+          console.log(err);
+        });
+    }
+
   }
 
   deletePassenger(passengerId) {
