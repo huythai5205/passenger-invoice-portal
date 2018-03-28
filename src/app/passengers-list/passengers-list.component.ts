@@ -43,9 +43,8 @@ export class PassengersListComponent implements OnInit {
       });
   }
 
-  updatePassenger(passengerId) {
-    this.dataService.ids.passengerId = passengerId;
-    this.router.navigate(['update-passenger']);
+  updatePassenger(passenger) {
+    console.log(passenger);
   }
 
 }

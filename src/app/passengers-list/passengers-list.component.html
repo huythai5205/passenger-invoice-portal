@@ -14,15 +14,25 @@
   <tbody *ngIf="passengers">
     <tr *ngFor="let passenger of passengers;">
       <td>
-        <button (click)="deletePassenger(passenger.id)">Edit</button>
+        <button (click)="deletePassenger(passenger.id)">Delete</button>
       </td>
-      <td>{{passenger.name}}</td>
-      <td>{{passenger.isGroupLeader}}</td>
-      <td>{{passenger.discountCredit}}</td>
-      <td>{{passenger.hasSplitCredit}}</td>
-      <td>{{passenger.balance}}</td>
       <td>
-        <button (click)="updatePassenger(passenger.id)">Edit</button>
+        <input class="form-control" type="text" name="name" [(ngModel)]="passenger.name" #name="ngModel">
+      </td>
+      <td>
+        <input class="form-control" type="checkbox" name="is_group_leader" [(ngModel)]="passenger.isGroupLeader" #is_group_leader="ngModel">
+      </td>
+      <td>
+        <input class="form-control" type="number" name="discount_credit" [(ngModel)]="passenger.discountCredit" #discount_credit="ngModel">
+      </td>
+      <td>
+        <input class="form-control" type="checkbox" name="has_split_credit" [(ngModel)]="passenger.hasSplitCredit" #has_split_credit="ngModel">
+      </td>
+      <td>
+        <input class="form-control" type="number" name="balance" [(ngModel)]="passenger.balance" #balance="ngModel">
+      </td>
+      <td>
+        <button (click)="updatePassenger(passenger)">Edit</button>
       </td>
     </tr>
   </tbody>
